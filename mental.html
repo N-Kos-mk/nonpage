@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>けいさん</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--mentalDecreaseAmount = Math.floor(Math.floor((1+Math.abs(mood)/200)*rate/100)*maxMental)-->
+<script>
+function addNumericInput(numericTarget) {
+    numericTarget.addEventListener("input", function (event) {
+        if (!/^\d*$/.test(event.target.value)) {
+            event.target.value = event.target.value.replace(/[^\d]/g, "");
+        }
+    });
+}
+function calc() {
+    var maxMental = Number(document.querySelector(".maxMental").value);
+    var mood = Number(document.querySelector(".mood").value);
+    var rate = Number(document.querySelector(".rate").value);
+    let mentalDecreaseAmountOut = document.querySelector(".mentalDecreaseAmountOut");
+    let fromOut = document.querySelector(".fromOut");
+    let toOut = document.querySelector(".toOut");
+    mentalDecreaseAmount = Math.floor(Math.floor((1+Math.abs(mood)/200)*rate/100)*maxMental);
+    mentalDecreaseAmountOut.innerText =  mentalDecreaseAmount;
+    mentalDecreaseAmountOut.innerHTML = mentalDecreaseAmount;
+    fromOut.innerHTML = 1 + mentalDecreaseAmount;
+    toOut.innerHTML = Math.floor(maxMental / 20) + mentalDecreaseAmount;
+}
+window.onload = function() {
+    let maxMental = document.querySelector(".maxMental");
+    let mood = document.querySelector(".mood");
+    let rate = document.querySelector(".rate");
+    addNumericInput(maxMental);
+    addNumericInput(mood);
+    addNumericInput(rate);
+    maxMental.addEventListener("input", calc);
+    mood.addEventListener("input", calc);
+    rate.addEventListener("input", calc);
+}
+</script>
+</head>
+<body>
+<label for="maxMental">メンタル最大値</label>
+<input name="maxMental" class="maxMental"><br>
+<label for="mood">ムード</label>
+<input name="mood" class="mood"><br>
+<label for="rate">割合(%)</label>
+<input name="rate" class="rate"><br><br>
+メンタル減少量 : <span class="mentalDecreaseAmountOut"></span><br>
+5%以下範囲 : <span class="fromOut"></span>～<span class="toOut"></span><br>
+<body>
+</html>
