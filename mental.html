@@ -20,7 +20,7 @@ function calc() {
     let mentalDecreaseAmountOut = document.querySelector(".mentalDecreaseAmountOut");
     let fromOut = document.querySelector(".fromOut");
     let toOut = document.querySelector(".toOut");
-    mentalDecreaseAmount = Math.floor(Math.floor((1+Math.abs(mood)/200)*rate/100)*maxMental);
+    mentalDecreaseAmount = Math.floor(Math.floor((1+Math.abs(mood)/200)*rate)/100*maxMental);
     mentalDecreaseAmountOut.innerText =  mentalDecreaseAmount;
     mentalDecreaseAmountOut.innerHTML = mentalDecreaseAmount;
     fromOut.innerHTML = 1 + mentalDecreaseAmount;
