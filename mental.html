@@ -17,15 +17,19 @@ function calc() {
     var maxMental = Number(document.querySelector(".maxMental").value);
     var mood = Number(document.querySelector(".mood").value);
     var rate = Number(document.querySelector(".rate").value);
-    let mentalDecreaseAmountOut = document.querySelector(".mentalDecreaseAmountOut");
-    let fromOut = document.querySelector(".fromOut");
-    let toOut = document.querySelector(".toOut");
+    
     mentalDecreaseAmount = Math.floor(Math.floor((1+Math.abs(mood)/200)*rate)/100*maxMental);
-    mentalDecreaseAmountOut.innerText =  mentalDecreaseAmount;
-    mentalDecreaseAmountOut.innerHTML = mentalDecreaseAmount;
-    fromOut.innerHTML = 1 + mentalDecreaseAmount;
-    toOut.innerHTML = Math.floor(maxMental / 20) + mentalDecreaseAmount;
+    mentalDecreaseAmount2 = Math.floor(Math.floor((1+Math.abs(mood)/400)*rate)/100*maxMental);
+
+    document.querySelector(".mentalDecreaseAmountOut").innerText = mentalDecreaseAmount;
+    document.querySelector(".fromOut").innerHTML = 1 + mentalDecreaseAmount;
+    document.querySelector(".toOut").innerHTML = Math.floor(maxMental / 20) + mentalDecreaseAmount;
+
+    document.querySelector(".mentalDecreaseAmountOut2").innerText = mentalDecreaseAmount2;
+    document.querySelector(".fromOut2").innerHTML = 1 + mentalDecreaseAmount2;
+    document.querySelector(".toOut2").innerHTML = Math.floor(maxMental / 20) + mentalDecreaseAmount2;
 }
+
 window.onload = function() {
     let maxMental = document.querySelector(".maxMental");
     let mood = document.querySelector(".mood");
@@ -37,6 +41,7 @@ window.onload = function() {
     mood.addEventListener("input", calc);
     rate.addEventListener("input", calc);
 }
+
 </script>
 </head>
 <body>
@@ -46,7 +51,11 @@ window.onload = function() {
 <input name="mood" class="mood"><br>
 <label for="rate">割合(%)</label>
 <input name="rate" class="rate"><br><br>
+ハッピー、メロウ<br>
 メンタル減少量 : <span class="mentalDecreaseAmountOut"></span><br>
-5%以下範囲 : <span class="fromOut"></span>～<span class="toOut"></span><br>
+5%以下範囲 : <span class="fromOut"></span>～<span class="toOut"></span><br><br>
+ニュートラル<br>
+メンタル減少量 : <span class="mentalDecreaseAmountOut2"></span><br>
+5%以下範囲 : <span class="fromOut2"></span>～<span class="toOut2"></span><br><br>
 <body>
 </html>
